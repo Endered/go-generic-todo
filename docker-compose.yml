@@ -1,0 +1,20 @@
+version: "3"
+services:
+  db:
+    platform: linux/x86_64
+    image: mysql:8.0.28
+    volumes:
+      - ./db-data/:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./mysql/initdb:/docker-entrypoint-initdb.d
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: todo-db
+    ports:
+      - "3306:3306"
+volumes:
+  db-data:
+    driver: local
