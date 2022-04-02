@@ -16,7 +16,7 @@ func Foreach[T any](arr []T, f func(T)) {
 	}
 }
 
-func Fillter[T any](arr []T, f func(T) bool) []T {
+func Filter[T any](arr []T, f func(T) bool) []T {
 	var res []T
 	for _, v := range arr {
 		if f(v) {
